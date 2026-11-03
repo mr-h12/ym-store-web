@@ -47,11 +47,11 @@ export const CHAPTERS: Chapter[] = [
     scene: { ...base, camX: -1.4, camY: 0.2, camZ: 3.2, targetX: -1.6, targetY: 0.1, targetZ: -0.6, rotX: 0, rotY: 0.12, offsetX: -1.6, explode: 0.6, fold: 0, focus: 1, light: 1.45, sweep: 0.8, wind: 0.5 },
   },
   {
-    id: "data", anchor: "chapter-data", index: "04", label: "Data", range: [0.7, 0.9],
+    id: "data", anchor: "chapter-data", index: "04", label: "Data", range: [0.7, 0.93],
     scene: { ...base, camX: 0, camY: 2.6, camZ: 11, targetY: -0.4, rotX: 0.1, rotY: 0, offsetX: 0, explode: 0.4, fan: 1, light: 0.75, sweep: 0.2, wind: 0.45 },
   },
   {
-    id: "finale", anchor: "chapter-finale", index: "05", label: "Order", range: [0.9, 1],
+    id: "finale", anchor: "chapter-finale", index: "05", label: "Order", range: [0.93, 1],
     scene: { ...base, camX: 0, camY: 0.2, camZ: 6.8, rotX: -0.1, rotY: 0.85, offsetX: 0, fold: 1, light: 1.2, sweep: 0.4, wind: 0.4 },
   },
 ];
