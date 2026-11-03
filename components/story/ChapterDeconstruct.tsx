@@ -34,6 +34,7 @@ export function ChapterDeconstruct() {
       const dots = $all(section, "[data-connector-dot]");
       const legendRows = $all(section, "[data-legend-row]");
       const legendRule = $all(section, "[data-legend-rule]");
+      const legend = $all(section, "[data-legend]");
       const chars = headlineChars(section);
 
       // ── Reveal (0 → ~0.3)
@@ -49,6 +50,7 @@ export function ChapterDeconstruct() {
         )
         .fromTo(connectors, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.1, stagger: 0.035, ease: "power1.inOut" }, 0.16)
         .fromTo(dots, { scale: 0 }, { scale: 1, duration: 0.04, stagger: 0.035, ease: "back.out(3)" }, 0.24)
+        .fromTo(legend, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.06 }, 0.12)
         .fromTo(legendRule, { scaleX: 0, transformOrigin: "100% 50%" }, { scaleX: 1, duration: 0.1 }, 0.14)
         .fromTo(legendRows, { autoAlpha: 0, x: 18 }, { autoAlpha: 1, x: 0, duration: 0.07, stagger: 0.022, ease: "power2.out" }, 0.15);
       counters.forEach((el, i) => tl.add(counterTween(el, 0.14), 0.13 + i * 0.035));
@@ -89,7 +91,7 @@ export function ChapterDeconstruct() {
             <KineticHeadline id={`${chapter.id}-title`} lines={COPY.deconstruct.title} accent="." className="type-h2 text-chalk" />
           </div>
 
-          <p data-body className="mt-3 max-w-[44ch] text-dim max-sm:text-[0.875rem] max-sm:leading-snug lg:mt-5">
+          <p data-body className="mt-3 max-w-[44ch] text-chalk/75 max-sm:text-[0.875rem] max-sm:leading-snug lg:mt-5">
             {COPY.deconstruct.body}
           </p>
 
@@ -110,6 +112,7 @@ export function ChapterDeconstruct() {
 
         {/* Technical legend of the five cloth layers */}
         <aside
+          data-legend
           aria-label="Fabric layers"
           className="mt-5 lg:absolute lg:right-[var(--gutter)] lg:bottom-16 lg:mt-0 lg:w-[min(30rem,34vw)] lg:border lg:border-white/10 lg:bg-obsidian/60 lg:p-4 lg:backdrop-blur-md"
         >

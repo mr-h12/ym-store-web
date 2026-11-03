@@ -83,7 +83,7 @@ export function ChapterFinale() {
           </div>
 
           <div className="mt-4 grid gap-5 lg:mt-7 lg:grid-cols-12 lg:items-end lg:gap-8">
-            <p data-body className="max-w-[46ch] text-dim max-sm:line-clamp-3 max-sm:text-[0.875rem] max-sm:leading-snug lg:col-span-5 lg:text-[length:var(--fs-lead)]">
+            <p data-body className="max-w-[46ch] text-chalk/75 max-sm:line-clamp-3 max-sm:text-[0.875rem] max-sm:leading-snug lg:col-span-5 lg:text-[length:var(--fs-lead)]">
               {COPY.finale.body}
             </p>
             <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3 lg:col-span-7 lg:justify-end">
@@ -127,7 +127,7 @@ export function ChapterFinale() {
           <div className="grid grid-cols-2 gap-x-4 gap-y-3 pt-3 text-[0.75rem] leading-snug lg:grid-cols-12 lg:gap-x-8 lg:pt-5 lg:text-[0.8125rem]">
             <nav data-foot-col aria-label="Categories" className="lg:col-span-3">
               <p className="type-label mb-1.5 text-dim lg:mb-2.5">Shop</p>
-              <ul className="grid grid-cols-1 gap-x-4 gap-y-0.5 sm:grid-cols-2 lg:gap-y-1">
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-0.5 lg:gap-y-1">
                 {categories.map((c) => (
                   <li key={c.slug}>
                     <a

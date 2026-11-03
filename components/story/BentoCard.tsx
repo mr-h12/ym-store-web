@@ -31,10 +31,10 @@ export function BentoCard({ label, meta, children, className, tone = "glass", ti
     >
       <span aria-hidden className={`absolute inset-0 -z-10 ${underlay}`} />
       <header className="flex items-start justify-between gap-3">
-        <span className="type-label text-dim transition-colors duration-500 group-hover:text-chalk">{label}</span>
+        <span className="type-label text-dim transition-colors duration-500 group-hover:text-chalk max-sm:tracking-[0.1em]">{label}</span>
         {meta ? <span className="type-label text-accent">{meta}</span> : null}
       </header>
-      <div className="mt-auto flex min-h-0 flex-col pt-2">{children}</div>
+      <div className="mt-auto flex min-h-0 flex-col pt-1.5 sm:pt-2">{children}</div>
     </article>
   );
 }

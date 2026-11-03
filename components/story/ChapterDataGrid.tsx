@@ -54,13 +54,13 @@ function FeaturedCard({ product, index, className }: { product: Product; index: 
           ))}
           <span className="type-label absolute bottom-2 left-2 text-chalk mix-blend-difference">{product.category}</span>
         </div>
-        <h3 className="type-h3 text-chalk max-sm:text-[1.125rem]">{product.name}</h3>
+        <h3 className="type-h3 text-chalk max-sm:text-[1rem]">{product.name}</h3>
         <p className="text-[0.8125rem] leading-snug text-dim max-lg:hidden [@media(max-height:820px)]:hidden">{product.material}</p>
         <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
           <span className="type-label text-dim max-sm:hidden">{product.fit} fit</span>
           <span className="font-mono text-[0.8125rem] text-chalk tabular-nums">{formatPrice(product.price)}</span>
         </div>
-        <ul className="flex items-center gap-1.5" aria-label="Colours">
+        <ul className="flex items-center gap-1.5 max-sm:hidden" aria-label="Colours">
           {product.colours.map((c) => (
             <li key={c.name} title={c.name} className="size-3.5 border border-white/25" style={{ background: c.hex }}>
               <span className="sr-only">{c.name}</span>
@@ -174,7 +174,7 @@ export function ChapterDataGrid() {
 
         {/* Bento */}
         <div
-          className="grid min-h-0 flex-1 grid-cols-2 grid-rows-[repeat(4,minmax(0,1fr))] gap-2 sm:gap-3 lg:grid-cols-4 lg:grid-rows-[repeat(3,minmax(0,1fr))]"
+          className="grid min-h-0 flex-1 grid-cols-2 grid-rows-[repeat(3,minmax(0,1fr))_minmax(0,1.2fr)] gap-2 sm:gap-3 lg:grid-cols-4 lg:grid-rows-[repeat(3,minmax(0,1fr))]"
           style={{ perspective: "1400px" }}
         >
           {a ? <FeaturedCard product={a} index={0} className="col-start-1 row-start-4 lg:col-start-1 lg:row-span-2 lg:row-start-1" /> : null}
@@ -191,14 +191,14 @@ export function ChapterDataGrid() {
             <span className={statSize}>
               <Counter value={policies.freeShippingThreshold} prefix={`${brand.currency} `} separator />
             </span>
-            <span className="type-label mt-1.5 text-chalk/70">Otherwise {formatPrice(policies.shippingFee)}</span>
+            <span className="type-label mt-1.5 text-chalk/70 max-sm:hidden">Otherwise {formatPrice(policies.shippingFee)}</span>
           </BentoCard>
 
           <BentoCard label="Returns" meta="03" className="col-start-1 row-start-2 lg:col-start-4 lg:row-start-1">
             <span className={statSize}>
               <Counter value={policies.returnsWindowDays} suffix="-day" />
             </span>
-            <span className="type-label mt-1.5 text-dim">{trustPoints[1].detail}</span>
+            <span className="type-label mt-1.5 text-dim max-sm:tracking-[0.08em]">{trustPoints[1].detail}</span>
           </BentoCard>
 
           <BentoCard label="Payment" meta="04" className="col-start-2 row-start-2 lg:col-start-1 lg:row-start-3">
@@ -207,7 +207,7 @@ export function ChapterDataGrid() {
               <br />
               delivery
             </span>
-            <span className="type-label mt-1.5 text-dim">
+            <span className="type-label mt-1.5 text-dim max-sm:hidden">
               + {policies.payment[1].label.toLowerCase()}
             </span>
           </BentoCard>
@@ -250,7 +250,7 @@ export function ChapterDataGrid() {
         </div>
 
         {/* Category marquee */}
-        <div data-marquee className="relative overflow-hidden border-y border-white/10 py-2" aria-label="Categories">
+        <div data-marquee className="relative overflow-hidden border-y max-sm:hidden border-white/10 py-2" aria-label="Categories">
           <ul data-marquee-track className="flex w-max">
             {[0, 1].map((dup) =>
               categories.map((cat) => (

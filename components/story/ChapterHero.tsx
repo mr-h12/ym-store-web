@@ -56,6 +56,8 @@ export function ChapterHero() {
       tl.to(scrims, { autoAlpha: 0, duration: 1 - X, ease: "power1.in" }, X)
         .to(exitGroups, { autoAlpha: 0, y: -48, duration: 0.2, stagger: 0.03, ease: "power2.in" }, X)
         .to(titleWrap, { scale: 1.14, yPercent: -10, duration: 1 - X, ease: "power1.in" }, X)
+        // The accent rule lives in the title wrap: fade it so it doesn't linger under the HUD once the letters are gone.
+        .to(rule, { autoAlpha: 0, duration: 0.2, ease: "power1.in" }, X + 0.06)
         .to(
           chars,
           {

@@ -135,8 +135,9 @@ html.lenis body {
 @utility glass {
   background: rgb(255 255 255 / 0.05);
   border: 1px solid rgb(255 255 255 / 0.1);
-  backdrop-filter: blur(12px) saturate(140%);
+  /* Prefixed first: if the unprefixed one comes first, Lightning CSS keeps only -webkit- and Chromium/Firefox lose the blur. */
   -webkit-backdrop-filter: blur(12px) saturate(140%);
+  backdrop-filter: blur(12px) saturate(140%);
 }
 
 /* Corner tick marks — add to a `relative` element */

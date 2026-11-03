@@ -39,10 +39,13 @@ export function ChapterDeepDive() {
       const scan = $all(section, "[data-scan]");
       const readout = $all(section, "[data-readout]");
       const cross = $all(section, "[data-cross]");
+      const panel = $all(section, "[data-panel]");
       const chars = headlineChars(section);
 
       // ── Reveal
       tl.fromTo(scrim, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.14 }, 0)
+        // The glass panel (and its un-animated "Fit" row) would otherwise scroll in as an empty box.
+        .fromTo(panel, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.1, ease: "power1.out" }, 0)
         .fromTo(reticle, { autoAlpha: 0, scale: 1.25 }, { autoAlpha: 1, scale: 1, duration: 0.16, ease: "power3.out" }, 0.02)
         .fromTo(cross, { scaleX: 0, scaleY: 0 }, { scaleX: 1, scaleY: 1, duration: 0.1, ease: "power2.out" }, 0.1)
         .fromTo(eyebrow, { autoAlpha: 0, x: 24 }, { autoAlpha: 1, x: 0, duration: 0.08, ease: "power2.out" }, 0.03)
@@ -101,14 +104,14 @@ export function ChapterDeepDive() {
       <div
         data-scrim
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[72%] bg-linear-to-t from-obsidian/90 via-obsidian/60 to-transparent lg:inset-y-0 lg:right-0 lg:left-auto lg:h-full lg:w-[62%] lg:bg-linear-to-l lg:from-obsidian/90 lg:via-obsidian/70 lg:to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[85%] bg-linear-to-t from-obsidian/95 via-obsidian/80 to-transparent lg:inset-y-0 lg:right-0 lg:left-auto lg:h-full lg:w-[62%] lg:bg-linear-to-l lg:from-obsidian/90 lg:via-obsidian/70 lg:to-transparent"
       />
 
       {/* Focus reticle over the linen close-up (cloth sits left) */}
       <div
         data-reticle
         aria-hidden
-        className="ticks pointer-events-none absolute top-[13svh] left-[8%] h-[30svh] w-[84%] lg:top-[19svh] lg:left-[7%] lg:h-[54svh] lg:w-[34vw]"
+        className="ticks pointer-events-none absolute top-[12svh] left-[8%] h-[22svh] w-[84%] lg:top-[19svh] lg:left-[7%] lg:h-[54svh] lg:w-[34vw]"
         style={{ ["--tick" as string]: "22px" }}
       >
         <div className="absolute inset-0 overflow-hidden">
@@ -133,7 +136,7 @@ export function ChapterDeepDive() {
       </div>
 
       <div data-content className="gutter-x relative flex h-full flex-col justify-end pt-[72px] pb-16 lg:justify-center">
-        <div className="relative isolate flex flex-col lg:ml-auto lg:w-[44%] lg:max-w-[40rem] lg:border lg:border-white/10 lg:p-8 lg:backdrop-blur-md">
+        <div data-panel className="relative isolate flex flex-col lg:ml-auto lg:w-[44%] lg:max-w-[40rem] lg:border lg:border-white/10 lg:p-8 lg:backdrop-blur-md">
           <span aria-hidden className="absolute inset-0 -z-10 hidden bg-obsidian/55 lg:block" />
           <p data-eyebrow className="type-label flex items-center gap-2.5 text-chalk">
             <span className="text-accent">{chapter.index}</span>
@@ -145,7 +148,7 @@ export function ChapterDeepDive() {
             <KineticHeadline id={`${chapter.id}-title`} lines={COPY.deepdive.title} accent="." className="type-h2 text-chalk" />
           </div>
 
-          <p data-body className="mt-3 max-w-[48ch] text-dim max-sm:line-clamp-4 max-sm:text-[0.875rem] max-sm:leading-snug lg:mt-5">
+          <p data-body className="mt-3 max-w-[48ch] text-chalk/75 max-sm:line-clamp-4 lg:text-dim max-sm:text-[0.875rem] max-sm:leading-snug lg:mt-5">
             {COPY.deepdive.body}
           </p>
 
